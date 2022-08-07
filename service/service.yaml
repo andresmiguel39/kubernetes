@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:  
+    kubernetes.io/change-cause: "creation of nginx"
+  name: deployment
+  labels:
+    app: podset
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: podset
+  template:
+    metadata:
+      labels:
+        app: podset
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:alpine
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+  labels:
+    app: podset
+spec:
+  type: ClusterIP
+  selector:
+    app: podset
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 80
