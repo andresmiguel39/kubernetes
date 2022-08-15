@@ -51,7 +51,7 @@ func main() {
 }
 
 
-
+-----
 
 FROM golang:1.13 as builder
 
@@ -65,7 +65,7 @@ WORKDIR /app
 COPY --from=builder /app/app .
 CMD ["./app"]
 
-
+-------
 
 
 
@@ -83,7 +83,7 @@ imagePullPolicy: IfNotPresent
 
  kubectl exec --stdin --tty frontend-559dd49d59-njdpv -- sh
  
- kubecto run other --image=nginx
+ kubectl run other --image=nginx
 
  apk add -U lynx
 
@@ -93,14 +93,20 @@ minikube start
 
 minikube -p minikube docker-env
 
-eval $(minikube -p minikube docker-env)
+
 
 docker build . -f Dockerfile -t andresmiguel/k8sappfront:1.0
 
+docker push andresmiguel/k8sappfront:1.0
+
 kubectl port-forward service/backend-k8sapp 80:80
+
+kubectl port-forward service/frontend-k8sapp 80:30672 -n dev
 
 kubectl port-forward other 80:80
 
+
+<svc> + "." + <ns> + "." + "svc.cluster.local"
 
 
 <div id="id01"></div>
