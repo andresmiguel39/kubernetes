@@ -11,3 +11,30 @@ metadata:
   name: prod
   labels: 
     name: prod
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:  
+    kubernetes.io/change-cause: "change ports again"
+  name: deployment
+  labels:
+    app: podset
+  namespace: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: podset
+  template:
+    metadata:
+      labels:
+        app: podset
+    spec:
+      containers:
+      - name: conte1
+        image: python:3.7-alpine
+        command: ['sh', '-c', 'echo conte1 > index.html && python -m http.server 8082' ]
+      - name: conte2
+        image: python:3.7-alpine
+        command: ['sh', '-c', 'echo conte2 > index.html && python -m http.server 8082' ]
