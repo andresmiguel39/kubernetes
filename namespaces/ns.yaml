@@ -22,7 +22,7 @@ metadata:
     app: podset
   namespace: dev
 spec:
-  replicas: 3
+  replicas: 4
   selector:
     matchLabels:
       app: podset
