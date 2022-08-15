@@ -95,7 +95,7 @@ minikube -p minikube docker-env
 
 eval $(minikube -p minikube docker-env)
 
-docker build . -f Dockerfile -t k8sappfront:1.0
+docker build . -f Dockerfile -t andresmiguel/k8sappfront:1.0
 
 kubectl port-forward service/backend-k8sapp 80:80
 

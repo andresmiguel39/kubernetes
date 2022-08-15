@@ -126,12 +126,17 @@ Make the following directory and configuration files.
 mkdir -p $HOME/.kube
 cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 chown $(id -u):$(id -g) $HOME/.kube/config
+kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 ```
 
 7. Enable pod to run on Master. This is only for demonstration purposes and is not recommended for production use.
 
 ```
 kubectl taint nodes --all node-role.kubernetes.io/master-
+```
+or 
+```
+kubectl taint node myserver node-role.kubernetes.io/master:NoSchedule-
 ```
 
 8. Check that Master node has been enabled and is running.

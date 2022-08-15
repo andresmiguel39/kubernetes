@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: k8sappfront:1.0
+        image: andresmiguel/k8sappfront:1.0
         imagePullPolicy: IfNotPresent
 ---
 apiVersion: v1
