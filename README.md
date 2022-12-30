@@ -148,6 +148,13 @@ master  NotReady  master   91s     v1.18.0
 ```
 
 
+9. To reset
+
+```
+kubeadm reset && rm -rf /etc/cni/net.d
+```
+
+
 
 
 

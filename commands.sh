@@ -6,7 +6,7 @@ docker exec -it 8602fb7187492182cc8b234975fba13a6f27459a3426de1aab1fdf0b76b47215
 
 
 
-
+aws eks update-kubeconfig --name cluster-terraform
 
 
 package main
